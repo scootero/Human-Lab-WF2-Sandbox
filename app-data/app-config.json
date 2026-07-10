@@ -156,6 +156,7 @@
       "quantified self",
       "n-of-1 experiments"
     ],
+    "metadataBaseUrl": "",
     "ogImageUrl": "/app-data/images/og-image.png"
   },
   "footer": {
@@ -174,4 +175,4 @@
     "deploymentId": "",
     "campaignName": "human-lab-validation"
   }
-}
+}\n
