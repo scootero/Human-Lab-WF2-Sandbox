@@ -1,0 +1,14 @@
+node_modules
+.next
+dist
+build
+.env
+.vercel
+
+# App-specific images (generated from App Package or local placeholders)
+app-data/images/*.png
+app-data/images/*.jpg
+app-data/images/*.jpeg
+app-data/images/*.webp
+public/app-data/images/*
+!public/app-data/images/.gitkeep

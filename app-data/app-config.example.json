@@ -1,0 +1,177 @@
+{
+  "_meta": {
+    "purpose": "reference-only",
+    "source": "human-lab App Package transform output",
+    "notUsedAtBuildTime": true
+  },
+  "appId": "human-lab",
+  "appName": "Human Lab",
+  "tagline": "Stop guessing. Start testing.",
+  "heroHeadline": "Stop guessing. Start testing.",
+  "heroSubheadline": "Run short experiments on yourself and discover what actually works.",
+  "heroBody": "Human Lab turns self-improvement into structured, science-backed experiments. Pick a category—stress, sleep, energy, or habits—follow a guided study for 7 to 45 days, check in daily, and see whether the change made a real difference for you.\n\nNo miracle claims. No generic advice. Just your data, your experiments, and an AI scientist in your corner.",
+  "badgeText": "Coming soon to the App Store",
+  "primaryCtaText": "Buy Now",
+  "secondaryCtaText": "See how it works",
+  "theme": {
+    "style": "midnight",
+    "accentColor": "emerald",
+    "mode": "dark"
+  },
+  "logo": {
+    "text": "H",
+    "imageUrl": ""
+  },
+  "mockup": {
+    "embedUrl": "",
+    "baseWidth": 375,
+    "baseHeight": 820,
+    "useOuterDeviceFrame": false,
+    "clipBottomPx": 0
+  },
+  "problem": "Trying interventions without knowing whether they actually work for you",
+  "solution": "Human Lab helps you run short, science-backed experiments on yourself. Pick a category, follow a structured study, check in daily, and discover what actually works for your stress, sleep, energy, and habits.",
+  "targetAudience": "curious self-improvers who want evidence—not guesswork",
+  "benefits": [
+    {
+      "title": "7–45 day studies",
+      "description": "Structured experiments with clear start and end dates.",
+      "icon": "sparkles"
+    },
+    {
+      "title": "Real data",
+      "description": "Daily check-ins build a personal evidence base.",
+      "icon": "check"
+    },
+    {
+      "title": "AI lab scientist",
+      "description": "Guidance and encouragement grounded in research.",
+      "icon": "star"
+    }
+  ],
+  "features": [
+    {
+      "title": "Science-backed experiment catalog",
+      "description": "Browse curated experiments with peer-reviewed sources—not influencer hype. Each study links to real research so you know why you're testing something."
+    },
+    {
+      "title": "Structured daily check-ins",
+      "description": "Complete short check-ins during your experiment. Track adherence, mood, and outcomes without spreadsheets or guesswork."
+    },
+    {
+      "title": "Category-based lab",
+      "description": "Choose what you want to improve—stress, sleep, energy, nutrition, focus, and more. Each category offers experiments sized for real life."
+    },
+    {
+      "title": "Your AI lab scientist",
+      "description": "Get guidance, encouragement, and context as you run experiments. The mad-scientist mascot keeps the process playful while staying grounded in evidence."
+    },
+    {
+      "title": "Clear results",
+      "description": "When your experiment ends, review what happened. See whether the intervention worked for you—not for an average user in a marketing slide."
+    }
+  ],
+  "screenshots": [
+    {
+      "title": "Stop guessing. Start testing.",
+      "description": "Choose a category and enter the lab.",
+      "image": "/app-data/images/01-home.png",
+      "sourcePath": "media/screenshots/01-home.png",
+      "missing": true
+    },
+    {
+      "title": "Run structured experiments",
+      "description": "Daily check-ins and progress tracking.",
+      "image": "/app-data/images/02-feature.png",
+      "sourcePath": "media/screenshots/02-feature.png",
+      "missing": true
+    },
+    {
+      "title": "See what actually worked",
+      "description": "Review outcomes backed by your data.",
+      "image": "/app-data/images/03-results.png",
+      "sourcePath": "media/screenshots/03-results.png",
+      "missing": true
+    }
+  ],
+  "howItWorks": {
+    "enabled": false,
+    "steps": []
+  },
+  "pricing": {
+    "enabled": true,
+    "headlineLabel": "Get for",
+    "price": "$6.99",
+    "billingLabel": "month",
+    "ctaText": "Buy Now on the App Store",
+    "finePrint": "$6.99/month after a 7-day free trial. Cancel anytime."
+  },
+  "emailCapture": {
+    "enabled": true,
+    "headline": "Ready to run your first experiment?",
+    "subheadline": "Start testing what actually works—for you.",
+    "placeholder": "Enter your email",
+    "buttonText": "Keep Me Updated"
+  },
+  "faq": {
+    "enabled": true,
+    "items": [
+      {
+        "question": "What is Human Lab?",
+        "answer": "Human Lab is a self-experimentation app for iOS. You pick a science-backed experiment, run it for a set number of days, check in daily, and review whether it actually improved your target outcome."
+      },
+      {
+        "question": "How is this different from a habit tracker?",
+        "answer": "Habit trackers help you repeat behaviors. Human Lab helps you test whether a specific intervention works for you—with a start date, end date, daily data, and a results summary. Think n-of-1 experiment, not endless streaks."
+      },
+      {
+        "question": "Do I need to be a scientist to use it?",
+        "answer": "No. Experiments are pre-designed with plain-language instructions and linked research. You follow the protocol, log check-ins, and review results when the study completes."
+      },
+      {
+        "question": "How much does it cost?",
+        "answer": "Human Lab offers a 7-day free trial, then $6.99/month. Cancel anytime from your account settings. Pricing may change before public launch—see the landing page for current terms."
+      },
+      {
+        "question": "Is my data private?",
+        "answer": "Your experiment data is yours. We do not sell personal health data. A full privacy policy will be published before launch."
+      },
+      {
+        "question": "What platforms are supported?",
+        "answer": "The full product targets iOS. This package includes an interactive web mockup for validation—the landing page embeds the deployed mockup URL; it does not import mockup source code directly."
+      }
+    ]
+  },
+  "testimonials": {
+    "enabled": false,
+    "items": []
+  },
+  "seo": {
+    "title": "Human Lab — Stop guessing. Start testing.",
+    "description": "Run short science-backed experiments on yourself. Discover what actually works for stress, sleep, energy, and habits.",
+    "keywords": [
+      "self-experimentation",
+      "habit tracker",
+      "wellness app",
+      "quantified self",
+      "n-of-1 experiments"
+    ],
+    "ogImageUrl": ""
+  },
+  "footer": {
+    "text": "© 2026 Human Lab. Privacy · Terms · Contact"
+  },
+  "tracking": {
+    "webhookUrl": "",
+    "buyNowWebhookUrl": "",
+    "emailWebhookUrl": "",
+    "experimentId": "exp_human-lab_2026q2_001",
+    "experimentRunId": "run_human-lab_2026q2_001",
+    "projectId": "proj_human-lab",
+    "landingVariantId": "v1",
+    "mockupVersionId": "v1",
+    "landingVersion": "",
+    "deploymentId": "",
+    "campaignName": "human-lab-validation"
+  }
+}
