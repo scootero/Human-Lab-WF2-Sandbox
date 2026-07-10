@@ -4,7 +4,7 @@
   "tagline": "Stop guessing. Start testing.",
   "heroHeadline": "Stop guessing. Start testing.",
   "heroSubheadline": "Run short experiments on yourself and discover what actually works.",
-  "heroBody": "Human Lab turns self-improvement into structured, science-backed experiments. Pick a category\u2014stress, sleep, energy, or habits\u2014follow a guided study for 7 to 45 days, check in daily, and see whether the change made a real difference for you.\n\nNo miracle claims. No generic advice. Just your data, your experiments, and an AI scientist in your corner.",
+  "heroBody": "Human Lab turns self-improvement into structured, science-backed experiments. Pick a category—stress, sleep, energy, or habits—follow a guided study for 7 to 45 days, check in daily, and see whether the change made a real difference for you.\n\nNo miracle claims. No generic advice. Just your data, your experiments, and an AI scientist in your corner.",
   "badgeText": "Coming soon to the App Store",
   "primaryCtaText": "Buy Now",
   "secondaryCtaText": "See how it works",
@@ -30,10 +30,10 @@
   },
   "problem": "Trying interventions without knowing whether they actually work for you",
   "solution": "Human Lab helps you run short, science-backed experiments on yourself. Pick a category, follow a structured study, check in daily, and discover what actually works for your stress, sleep, energy, and habits.",
-  "targetAudience": "curious self-improvers who want evidence\u2014not guesswork",
+  "targetAudience": "curious self-improvers who want evidence—not guesswork",
   "benefits": [
     {
-      "title": "7\u201345 day studies",
+      "title": "7–45 day studies",
       "description": "Structured experiments with clear start and end dates.",
       "icon": "sparkles"
     },
@@ -51,7 +51,7 @@
   "features": [
     {
       "title": "Science-backed experiment catalog",
-      "description": "Browse curated experiments with peer-reviewed sources\u2014not influencer hype. Each study links to real research so you know why you're testing something."
+      "description": "Browse curated experiments with peer-reviewed sources—not influencer hype. Each study links to real research so you know why you're testing something."
     },
     {
       "title": "Structured daily check-ins",
@@ -59,7 +59,7 @@
     },
     {
       "title": "Category-based lab",
-      "description": "Choose what you want to improve\u2014stress, sleep, energy, nutrition, focus, and more. Each category offers experiments sized for real life."
+      "description": "Choose what you want to improve—stress, sleep, energy, nutrition, focus, and more. Each category offers experiments sized for real life."
     },
     {
       "title": "Your AI lab scientist",
@@ -67,7 +67,7 @@
     },
     {
       "title": "Clear results",
-      "description": "When your experiment ends, review what happened. See whether the intervention worked for you\u2014not for an average user in a marketing slide."
+      "description": "When your experiment ends, review what happened. See whether the intervention worked for you—not for an average user in a marketing slide."
     }
   ],
   "screenshots": [
@@ -108,7 +108,7 @@
   "emailCapture": {
     "enabled": true,
     "headline": "Ready to run your first experiment?",
-    "subheadline": "Start testing what actually works\u2014for you.",
+    "subheadline": "Start testing what actually works—for you.",
     "placeholder": "Enter your email",
     "buttonText": "Keep Me Updated"
   },
@@ -121,7 +121,7 @@
       },
       {
         "question": "How is this different from a habit tracker?",
-        "answer": "Habit trackers help you repeat behaviors. Human Lab helps you test whether a specific intervention works for you\u2014with a start date, end date, daily data, and a results summary. Think n-of-1 experiment, not endless streaks."
+        "answer": "Habit trackers help you repeat behaviors. Human Lab helps you test whether a specific intervention works for you—with a start date, end date, daily data, and a results summary. Think n-of-1 experiment, not endless streaks."
       },
       {
         "question": "Do I need to be a scientist to use it?",
@@ -129,7 +129,7 @@
       },
       {
         "question": "How much does it cost?",
-        "answer": "Human Lab offers a 7-day free trial, then $6.99/month. Cancel anytime from your account settings. Pricing may change before public launch\u2014see the landing page for current terms."
+        "answer": "Human Lab offers a 7-day free trial, then $6.99/month. Cancel anytime from your account settings. Pricing may change before public launch—see the landing page for current terms."
       },
       {
         "question": "Is my data private?",
@@ -137,7 +137,7 @@
       },
       {
         "question": "What platforms are supported?",
-        "answer": "The full product targets iOS. This package includes an interactive web mockup for validation\u2014the landing page embeds the deployed mockup URL; it does not import mockup source code directly."
+        "answer": "The full product targets iOS. This package includes an interactive web mockup for validation—the landing page embeds the deployed mockup URL; it does not import mockup source code directly."
       }
     ]
   },
@@ -147,7 +147,7 @@
     "items": []
   },
   "seo": {
-    "title": "Human Lab \u2014 Stop guessing. Start testing.",
+    "title": "Human Lab — Stop guessing. Start testing.",
     "description": "Run short science-backed experiments on yourself. Discover what actually works for stress, sleep, energy, and habits.",
     "keywords": [
       "self-experimentation",
@@ -156,10 +156,11 @@
       "quantified self",
       "n-of-1 experiments"
     ],
+    "metadataBaseUrl": "",
     "ogImageUrl": "/app-data/images/og-image.png"
   },
   "footer": {
-    "text": "\u00a9 2026 Human Lab. Privacy \u00b7 Terms \u00b7 Contact"
+    "text": "© 2026 Human Lab. Privacy · Terms · Contact"
   },
   "tracking": {
     "webhookUrl": "",
