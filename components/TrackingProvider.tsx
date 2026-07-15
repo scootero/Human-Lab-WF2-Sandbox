@@ -10,7 +10,12 @@ import {
   type ReactNode,
 } from "react";
 import type { TrackingConfig } from "@/lib/appData";
-import { getSessionId, getVisitorId } from "@/lib/session";
+import {
+  captureAndPersistAttribution,
+  getSessionId,
+  getVisitorId,
+  type StoredAttribution,
+} from "@/lib/session";
 import {
   createTrackingPayload,
   postTrackingEvent,
@@ -59,6 +64,11 @@ export default function TrackingProvider({
   const pageViewSentRef = useRef(false);
   const visitorIdRef = useRef(getVisitorId());
   const sessionIdRef = useRef(getSessionId());
+  const storedAttributionRef = useRef<StoredAttribution | null>(null);
+
+  if (storedAttributionRef.current === null && typeof window !== "undefined") {
+    storedAttributionRef.current = captureAndPersistAttribution();
+  }
 
   const attribution = useMemo<TrackingAttribution>(
     () => ({
@@ -87,6 +97,10 @@ export default function TrackingProvider({
       email?: string;
       price?: string;
     }) => {
+      if (storedAttributionRef.current === null) {
+        storedAttributionRef.current = captureAndPersistAttribution();
+      }
+
       const payload = createTrackingPayload({
         eventType: params.eventType,
         appId,
@@ -100,6 +114,7 @@ export default function TrackingProvider({
           visitorId: visitorIdRef.current,
           sessionId: sessionIdRef.current,
         },
+        storedAttribution: storedAttributionRef.current,
       });
 
       const url = resolveWebhookUrl(tracking, params.eventType);
@@ -115,6 +130,9 @@ export default function TrackingProvider({
   useEffect(() => {
     if (pageViewSentRef.current) return;
     pageViewSentRef.current = true;
+    if (storedAttributionRef.current === null) {
+      storedAttributionRef.current = captureAndPersistAttribution();
+    }
     void trackEvent({ eventType: TRACKING_EVENTS.PAGE_VIEW });
   }, [trackEvent]);
 

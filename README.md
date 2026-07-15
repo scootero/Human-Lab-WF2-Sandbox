@@ -41,8 +41,9 @@ lib/
   appData.ts          # Config types and loaders
   validation.ts       # Email validation
   tracking.ts         # Webhook payload helpers and event types
-  TrackingProvider.tsx # Client tracking context (page_view, session metrics)
   themes.ts           # Theme system
+components/
+  TrackingProvider.tsx # Client tracking context (page_view, session metrics)
 app-data/
   app-config.json     # All app-specific content
   images/             # Screenshot images (1.png – 4.png)
@@ -153,7 +154,7 @@ If no webhook URL is configured, events are logged to the console in development
 
 ## Webhook payloads
 
-All events share the same JSON shape. n8n should append each payload as one row in a unified Google Sheet, using `eventType` to filter or pivot.
+All events share the same JSON shape (client omits `receivedAt`; n8n sets it). n8n appends each payload as one **33-column** Google Sheet row. Canonical WF3 contract: `rehearsals/wf3-human-lab-sandbox/`.
 
 ```json
 {
@@ -172,7 +173,7 @@ All events share the same JSON shape. n8n should append each payload as one row 
   "sessionId": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
   "email": "user@example.com",
   "price": "$4.99",
-  "pageUrl": "https://yoursite.com/?utm_source=facebook",
+  "pageUrl": "https://yoursite.com/?utm_source=facebook&fbclid=IwAR0_example",
   "referrer": "https://facebook.com/",
   "utmSource": "facebook",
   "utmMedium": "paid_social",
@@ -181,11 +182,18 @@ All events share the same JSON shape. n8n should append each payload as one row 
   "utmTerm": "",
   "timeOnPageSeconds": 42,
   "mockupInteracted": true,
-  "timestamp": "2026-06-29T12:00:42.000Z"
+  "timestamp": "2026-06-29T12:00:42.000Z",
+  "eventId": "evt_buy_now_clicked_550e8400-e29b-41d4-a716-446655440003",
+  "fbclid": "IwAR0_example",
+  "consentStatus": "unknown",
+  "metaCampaignId": "",
+  "metaAdSetId": "",
+  "metaAdId": "",
+  "placement": ""
 }
 ```
 
-UTM parameters and `referrer` are captured automatically from the browser.
+UTMs and `fbclid` are captured on first load, persisted, and included on every event. Each event gets a new `eventId`. `consentStatus` defaults to `unknown`. Meta fields stay blank until WF4.
 
 ## n8n Automation
 

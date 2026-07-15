@@ -1,4 +1,9 @@
 import type { TrackingConfig } from "@/lib/appData";
+import {
+  generateEventId,
+  getPersistedAttribution,
+  type StoredAttribution,
+} from "@/lib/session";
 
 export const TRACKING_EVENTS = {
   BUY_NOW_CLICKED: "buy_now_clicked",
@@ -44,6 +49,8 @@ export interface TrackingPayloadInput {
   price?: string;
   attribution?: TrackingAttribution;
   session?: SessionMetrics;
+  /** When provided, skips re-reading storage (tests / provider cache). */
+  storedAttribution?: StoredAttribution;
 }
 
 export interface TrackingPayload {
@@ -72,6 +79,13 @@ export interface TrackingPayload {
   timeOnPageSeconds: number;
   mockupInteracted: boolean;
   timestamp: string;
+  eventId: string;
+  fbclid: string;
+  consentStatus: string;
+  metaCampaignId: string;
+  metaAdSetId: string;
+  metaAdId: string;
+  placement: string;
 }
 
 const EMPTY_ATTRIBUTION: TrackingAttribution = {
@@ -85,24 +99,15 @@ const EMPTY_ATTRIBUTION: TrackingAttribution = {
   campaignName: "",
 };
 
+/** @deprecated Prefer getPersistedAttribution via createTrackingPayload. */
 export function getUtmParams(): UtmParams {
-  if (typeof window === "undefined") {
-    return {
-      utmSource: "",
-      utmMedium: "",
-      utmCampaign: "",
-      utmContent: "",
-      utmTerm: "",
-    };
-  }
-
-  const params = new URLSearchParams(window.location.search);
+  const stored = getPersistedAttribution();
   return {
-    utmSource: params.get("utm_source") ?? "",
-    utmMedium: params.get("utm_medium") ?? "",
-    utmCampaign: params.get("utm_campaign") ?? "",
-    utmContent: params.get("utm_content") ?? "",
-    utmTerm: params.get("utm_term") ?? "",
+    utmSource: stored.utmSource,
+    utmMedium: stored.utmMedium,
+    utmCampaign: stored.utmCampaign,
+    utmContent: stored.utmContent,
+    utmTerm: stored.utmTerm,
   };
 }
 
@@ -114,7 +119,7 @@ export function getReferrer(): string {
 export function createTrackingPayload(
   input: TrackingPayloadInput
 ): TrackingPayload {
-  const utm = getUtmParams();
+  const stored = input.storedAttribution ?? getPersistedAttribution();
   const attribution = input.attribution ?? EMPTY_ATTRIBUTION;
   const session = input.session ?? {
     timeOnPageSeconds: 0,
@@ -141,14 +146,21 @@ export function createTrackingPayload(
     price: input.price ?? "",
     pageUrl: typeof window !== "undefined" ? window.location.href : "",
     referrer: getReferrer(),
-    utmSource: utm.utmSource,
-    utmMedium: utm.utmMedium,
-    utmCampaign: utm.utmCampaign,
-    utmContent: utm.utmContent,
-    utmTerm: utm.utmTerm,
+    utmSource: stored.utmSource,
+    utmMedium: stored.utmMedium,
+    utmCampaign: stored.utmCampaign,
+    utmContent: stored.utmContent,
+    utmTerm: stored.utmTerm,
     timeOnPageSeconds: session.timeOnPageSeconds,
     mockupInteracted: session.mockupInteracted,
     timestamp: new Date().toISOString(),
+    eventId: generateEventId(),
+    fbclid: stored.fbclid,
+    consentStatus: "unknown",
+    metaCampaignId: "",
+    metaAdSetId: "",
+    metaAdId: "",
+    placement: "",
   };
 }
 
