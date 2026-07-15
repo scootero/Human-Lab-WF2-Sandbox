@@ -156,14 +156,14 @@
       "quantified self",
       "n-of-1 experiments"
     ],
-    "metadataBaseUrl": "",
+    "metadataBaseUrl": "https://human-lab-wf2-sandbox.vercel.app",
     "ogImageUrl": "/app-data/images/og-image.png"
   },
   "footer": {
     "text": "© 2026 Human Lab. Privacy · Terms · Contact"
   },
   "tracking": {
-    "webhookUrl": "",
+    "webhookUrl": "https://scottyo.app.n8n.cloud/webhook/app-validation/events",
     "buyNowWebhookUrl": "",
     "emailWebhookUrl": "",
     "experimentId": "exp_human-lab_2026q2_001",
@@ -171,8 +171,8 @@
     "projectId": "proj_human-lab",
     "landingVariantId": "v1",
     "mockupVersionId": "v1",
-    "landingVersion": "",
-    "deploymentId": "",
+    "landingVersion": "2026-07-11T16:30:30.422Z",
+    "deploymentId": "prj_9gbSkYZTlRMF3iLVxOIM40OswVMU",
     "campaignName": "human-lab-validation"
   }
 }
