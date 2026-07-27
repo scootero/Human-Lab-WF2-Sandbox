@@ -117,6 +117,7 @@ export interface SeoConfig {
   description: string;
   keywords: string[];
   ogImageUrl: string;
+  metadataBaseUrl?: string;
 }
 
 export interface FooterConfig {
@@ -127,6 +128,10 @@ export interface AppConfig {
   appId: string;
   appName: string;
   tagline: string;
+  /** Public contact email; empty when package omits identity.contactEmail */
+  contactEmail: string;
+  /** Stable YYYY-MM-DD policy effective date; empty when omitted */
+  privacyEffectiveDate: string;
   heroHeadline: string;
   heroSubheadline: string;
   heroBody: string;
@@ -157,6 +162,8 @@ const defaults: AppConfig = {
   appId: "app",
   appName: "App",
   tagline: "",
+  contactEmail: "",
+  privacyEffectiveDate: "",
   heroHeadline: "",
   heroSubheadline: "",
   heroBody: "",
@@ -197,7 +204,7 @@ const defaults: AppConfig = {
   },
   faq: { enabled: false, items: [] },
   testimonials: { enabled: false, items: [] },
-  seo: { title: "", description: "", keywords: [], ogImageUrl: "" },
+  seo: { title: "", description: "", keywords: [], ogImageUrl: "", metadataBaseUrl: "" },
   footer: { text: "" },
   tracking: {
     webhookUrl: "",

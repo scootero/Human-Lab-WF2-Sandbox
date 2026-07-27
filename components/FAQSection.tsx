@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import type { FAQItem } from "@/lib/appData";
+import { renderFaqAnswer } from "@/lib/faqRichText";
 
 interface FAQSectionProps {
   items: FAQItem[];
@@ -61,8 +62,11 @@ export default function FAQSection({ items }: FAQSectionProps) {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <p className="px-6 pb-5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
-                        {item.answer}
+                      <p
+                        className="px-6 pb-5 text-sm leading-relaxed"
+                        style={{ color: "var(--muted)" }}
+                      >
+                        {renderFaqAnswer(item.answer)}
                       </p>
                     </motion.div>
                   )}

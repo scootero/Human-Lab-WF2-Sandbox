@@ -406,6 +406,7 @@ function resolveTestimonials(app) {
 
 function mapSeo(app, packageDir, heroSubheadline) {
   const seo = app.landingPage?.seo ?? {};
+  const landingUrl = app.deployment?.landing?.url ?? "";
   const og = resolvePublicImageRef(
     app,
     app.media?.ogImage,
@@ -417,6 +418,7 @@ function mapSeo(app, packageDir, heroSubheadline) {
     title: seo.title ?? "",
     description: seo.description ?? "",
     keywords: seo.keywords ?? [],
+    metadataBaseUrl: landingUrl,
     ogImageUrl: og.missing ? "" : og.image.startsWith("http")
       ? og.image
       : og.image || "",
@@ -476,6 +478,14 @@ function generateAppConfig(app, options = {}) {
     appId: app.appId,
     appName: app.identity?.appName ?? app.appId,
     tagline: app.identity?.tagline ?? "",
+    contactEmail:
+      typeof app.identity?.contactEmail === "string"
+        ? app.identity.contactEmail.trim()
+        : "",
+    privacyEffectiveDate:
+      typeof app.identity?.privacyEffectiveDate === "string"
+        ? app.identity.privacyEffectiveDate.trim()
+        : "",
     heroHeadline: hero.headline || app.identity?.tagline || "",
     heroSubheadline,
     heroBody: hero.body ?? "",

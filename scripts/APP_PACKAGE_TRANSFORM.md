@@ -73,6 +73,8 @@ WF2 downloads `githubPath` / `url` binaries into `app-data/images/` before commi
 | `identity.appName` | `appName` |
 | `identity.tagline` | `tagline` |
 | `identity.badgeText` | `badgeText` |
+| `identity.contactEmail` | `contactEmail` (optional; empty string when omitted) |
+| `identity.privacyEffectiveDate` | `privacyEffectiveDate` (optional `YYYY-MM-DD`; empty when omitted) |
 | `sections[hero].inline` or `copy/hero.md` | `heroHeadline`, `heroSubheadline`, `heroBody` |
 | `commerce.cta.primaryText` | `primaryCtaText` |
 | `commerce.cta.secondaryText` | `secondaryCtaText` |
@@ -100,7 +102,7 @@ WF2 downloads `githubPath` / `url` binaries into `app-data/images/` before commi
 | `landingPage.sections[faq]` | `faq.enabled` |
 | `landingPage.sections[socialProof]` | `testimonials.enabled` + optional headline |
 | `landingPage.sections[footer].inline.body` | `footer.text` |
-| `landingPage.seo` | `seo.title`, `seo.description`, `seo.keywords` |
+| `landingPage.seo` + `deployment.landing.url` | `seo.title`, `seo.description`, `seo.keywords`, generated `seo.metadataBaseUrl` |
 | `mockup.baseWidth`, `baseHeight`, `clipBottomPx` | `mockup.*` |
 | `deployment.mockup.url` or `mockup.previewUrl` | `mockup.embedUrl` |
 | `tracking.webhookUrl` | `tracking.webhookUrl` (owned by **WF0**) |
@@ -134,5 +136,6 @@ Port these functions into the n8n Code node:
 - `resolveGithubAssetUrl`, `resolveAssetsRepo`, `resolvePublicImageRef`
 - `mapTracking`, `mapAccentColor`, `mapLandingStyle`, `mapBadgeText`, `mapSeo`, `mapFooter`
 - `resolveMockupUrl` → `mockup.embedUrl`
+- `mapSeo` derives `seo.metadataBaseUrl` from `deployment.landing.url` when present so Next metadata resolves relative OG/icon assets against the deployed landing origin. This is generated output, not an app-authored `app.json` field.
 
 Do **not** download Drive `copy/` or Drive `media/` folders.
