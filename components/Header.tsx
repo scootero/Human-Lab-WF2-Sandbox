@@ -8,9 +8,9 @@ interface HeaderProps {
   config: AppConfig;
 }
 
-const navLinks = [
+const baseNavLinks = [
   { label: "Features", href: "#features" },
-  { label: "Screenshots", href: "#screenshots" },
+  { label: "Screenshots", href: "#screenshots", requiresScreenshots: true },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];
@@ -18,6 +18,10 @@ const navLinks = [
 export default function Header({ config }: HeaderProps) {
   const { logo, icon, appName, primaryCtaText } = config;
   const brandImageUrl = logo.imageUrl || icon?.imageUrl || "";
+  const hasScreenshots = (config.screenshots ?? []).some((s) => s?.title);
+  const navLinks = baseNavLinks.filter(
+    (link) => !("requiresScreenshots" in link && link.requiresScreenshots) || hasScreenshots
+  );
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[color-mix(in_srgb,var(--surface)_80%,transparent)] backdrop-blur-xl">

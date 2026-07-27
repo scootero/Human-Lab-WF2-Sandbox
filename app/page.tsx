@@ -41,7 +41,9 @@ export default function HomePage() {
           targetAudience={config.targetAudience}
         />
         <FeatureSection features={features} />
-        <ScreenshotGallery screenshots={screenshots} />
+        {screenshots.length > 0 && (
+          <ScreenshotGallery screenshots={screenshots} />
+        )}
         {config.howItWorks?.enabled && (
           <HowItWorks steps={howItWorksSteps} />
         )}

@@ -77,7 +77,14 @@ export default function Hero({ config }: HeroProps) {
                   <StoreCtaLink href="#pricing">
                     {config.primaryCtaText}
                   </StoreCtaLink>
-                  <a href="#screenshots" className="btn-secondary">
+                  <a
+                    href={
+                      (config.screenshots ?? []).some((s) => s?.title)
+                        ? "#screenshots"
+                        : "#features"
+                    }
+                    className="btn-secondary"
+                  >
                     {config.secondaryCtaText}
                   </a>
                 </div>

@@ -93,7 +93,8 @@ WF2 downloads `githubPath` / `url` binaries into `app-data/images/` before commi
 | `landingPage.content.features` | `features[]` |
 | `landingPage.content.faq` | `faq.items[]` |
 | `landingPage.content.testimonials` | `testimonials.items[]` (`name` → `author`) |
-| `media.screenshots[]` | `screenshots[]` |
+| `media.screenshots[]` | `screenshots[]` (empty when `landingPage.sections[screenshots].enabled` is false) |
+| `landingPage.sections[screenshots]` | gates whether `screenshots[]` is populated |
 | `media.logo` | `logo.imageUrl` |
 | `media.icon` | `icon.imageUrl` (favicon / apple-touch) |
 | `media.ogImage` | `seo.ogImageUrl` |

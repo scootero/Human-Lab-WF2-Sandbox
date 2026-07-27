@@ -440,6 +440,8 @@ function generateAppConfig(app, options = {}) {
   const ctaSection = getSection(app, "cta");
   const faqSection = getSection(app, "faq");
   const socialSection = getSection(app, "socialProof");
+  const screenshotsSection = getSection(app, "screenshots");
+  const screenshotsEnabled = screenshotsSection?.enabled !== false;
 
   const mockupUrl = resolveMockupUrl(app);
   const features = resolveFeatures(app, packageDir);
@@ -450,16 +452,18 @@ function generateAppConfig(app, options = {}) {
   const heroSubheadline =
     hero.subheadline || app.identity?.description?.slice(0, 120) || "";
 
-  const screenshots = (app.media?.screenshots ?? []).map((shot) => {
-    const resolved = resolvePublicImageRef(app, shot, packageDir);
-    return {
-      title: shot.title ?? "",
-      description: shot.description ?? "",
-      image: resolved.image,
-      sourcePath: resolved.sourcePath,
-      missing: resolved.missing,
-    };
-  });
+  const screenshots = screenshotsEnabled
+    ? (app.media?.screenshots ?? []).map((shot) => {
+        const resolved = resolvePublicImageRef(app, shot, packageDir);
+        return {
+          title: shot.title ?? "",
+          description: shot.description ?? "",
+          image: resolved.image,
+          sourcePath: resolved.sourcePath,
+          missing: resolved.missing,
+        };
+      })
+    : [];
 
   const logoResolved = resolvePublicImageRef(
     app,
