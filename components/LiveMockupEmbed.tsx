@@ -255,21 +255,25 @@ export default function LiveMockupEmbed({ mockup, onFocusChange }: LiveMockupEmb
 
   return (
     <>
-      <div ref={containerRef} className="relative w-full max-w-[360px] lg:max-w-[340px]">
+      <div
+        ref={containerRef}
+        className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[340px]"
+      >
         <MockupFrame embedUrl={embedUrl} mockup={mockup} scale={scale} onClick={openFocus} />
 
         <button
           type="button"
           onClick={openFocus}
-          className="absolute bottom-0 right-0 z-10 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium backdrop-blur-md transition-opacity hover:opacity-90"
+          className="absolute bottom-2 right-2 z-10 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold backdrop-blur-md transition-transform hover:scale-[1.03] sm:bottom-3 sm:right-3 sm:text-[13px]"
           style={{
-            background: "color-mix(in srgb, var(--surface-elevated) 90%, transparent)",
-            color: "var(--muted)",
-            border: "1px solid var(--border)",
+            background: "color-mix(in srgb, var(--accent) 18%, var(--surface-elevated))",
+            color: "var(--accent)",
+            border: "1px solid color-mix(in srgb, var(--accent) 55%, transparent)",
+            boxShadow: "0 0 20px var(--accent-glow)",
           }}
           aria-label="Expand live app preview"
         >
-          <Maximize2 className="h-3 w-3" />
+          <Maximize2 className="h-3.5 w-3.5" />
           Click to expand
         </button>
       </div>
