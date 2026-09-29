@@ -1,8 +1,55 @@
-# iOS App Validation Landing Page Template
+<div align="center">
 
-A premium, config-driven Next.js landing page template for validating iOS app ideas. Swap content, images, themes, mockup URLs, and tracking webhooks via `app-data/` — no code edits required. Designed for automation with n8n.
+# 🌐 App Validation Landing Page
 
-## What This Template Does
+**A config-driven Next.js landing page for fake-door testing iOS app ideas**, shown here generating the page for **Human Lab**.
+
+Change `app-config.json` and you get a completely different app's landing page, with no code edits. It's built so n8n can generate and deploy one for each app idea.
+
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-3-06B6D4?logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11-0055FF?logo=framer&logoColor=white)
+![n8n](https://img.shields.io/badge/n8n-Webhooks-EA4B71?logo=n8n&logoColor=white)
+
+</div>
+
+> **🧪 Sandbox:** This repo is the rehearsal environment for **WF2 (landing page generate and deploy)** in the [App Validation System](https://github.com/scootero/App-Validation-System).
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="docs/readme/landing-desktop.jpg" alt="Landing page – desktop hero with live mockup embed" width="70%" />
+  &nbsp;
+  <img src="docs/readme/landing-mobile.jpg" alt="Landing page – mobile" width="22%" />
+</p>
+
+<details>
+<summary><b>Full page: hero, benefits, problem/solution, features, pricing, email capture, FAQ</b></summary>
+<p align="center"><img src="docs/readme/landing-full.jpg" alt="Landing page – full" width="80%" /></p>
+</details>
+
+## 🔄 How it works
+
+```mermaid
+flowchart LR
+    AP["📦 App Package<br/>app.json · copy · media"] -->|"generate-config"| CFG["🧾 app-config.json"]
+    CFG --> NX["⚛️ Next.js landing page"]
+    MK["📱 Deployed mockup URL"] -->|"iframe embed"| NX
+    NX -->|"deploy (WF2)"| V["▲ Vercel"]
+    V --> VIS["👀 Visitor from ad"]
+    VIS -->|"page_view · email_captured<br/>buy_now_clicked"| WH["🪝 n8n webhook"]
+    WH --> AN["📊 Analytics<br/>demand decision"]
+```
+
+---
+
+## 📖 Template Details
+
+### What This Template Does
 
 This template powers **fake-door validation** for iOS app concepts. It presents a polished, Apple-inspired landing page with:
 
@@ -14,7 +61,7 @@ This template powers **fake-door validation** for iOS app concepts. It presents 
 
 All content comes from `app-data/app-config.json`. n8n can replace config, images, and webhook URLs for each new app idea.
 
-## Folder Structure
+### Folder Structure
 
 ```
 app/
@@ -53,7 +100,7 @@ scripts/
   generate-placeholder-images.js
 ```
 
-## Editing app-config.json
+### Editing app-config.json
 
 All app-specific content lives in `app-data/app-config.json`:
 
@@ -70,7 +117,7 @@ All app-specific content lives in `app-data/app-config.json`:
 
 Set `enabled: false` on optional sections to hide them. Missing arrays or strings won't crash the page.
 
-### Tracking config
+#### Tracking config
 
 | Field | Purpose |
 |-------|---------|
@@ -86,7 +133,7 @@ Set `enabled: false` on optional sections to hide them. Missing arrays or string
 | `tracking.deploymentId` | Landing Vercel project or deployment URL |
 | `tracking.campaignName` | Ad campaign name for attribution |
 
-## Replacing Images
+### Replacing Images
 
 1. Drop PNG/JPG files into `app-data/images/` (e.g. `1.png`, `2.png`, `3.png`, `4.png`)
 2. Reference them in config: `"image": "/app-data/images/1.png"`
@@ -98,7 +145,7 @@ To generate placeholder images:
 node scripts/generate-placeholder-images.js
 ```
 
-## Setting the Mockup URL
+### Setting the Mockup URL
 
 In `app-config.json`:
 
@@ -113,7 +160,7 @@ In `app-config.json`:
 
 The mockup app is deployed separately and controls its own iPhone UI. Set `useOuterDeviceFrame: false` (default) to avoid double-framing. The landing page only wraps the iframe with a subtle glow/shadow.
 
-## Theme Styles
+### Theme Styles
 
 Configure in `app-config.json`:
 
@@ -139,7 +186,7 @@ Configure in `app-config.json`:
 
 **Accent colors:** `violet`, `blue`, `emerald`, `rose`, `amber`, `cyan`
 
-## Conversion tracking
+### Conversion tracking
 
 The landing page sends four event types to n8n webhooks:
 
@@ -152,7 +199,7 @@ The landing page sends four event types to n8n webhooks:
 
 If no webhook URL is configured, events are logged to the console in development and the UI still succeeds for local testing.
 
-## Webhook payloads
+### Webhook payloads
 
 All events share the same JSON shape (client omits `receivedAt`; n8n sets it). n8n appends each payload as one **33-column** Google Sheet row. Canonical WF3 contract: `rehearsals/wf3-human-lab-sandbox/`.
 
@@ -195,7 +242,7 @@ All events share the same JSON shape (client omits `receivedAt`; n8n sets it). n
 
 UTMs and `fbclid` are captured on first load, persisted, and included on every event. Each event gets a new `eventId`. `consentStatus` defaults to `unknown`. Meta fields stay blank until WF4.
 
-## n8n Automation
+### n8n Automation
 
 n8n should replace these files per app idea:
 
@@ -206,7 +253,7 @@ n8n should replace these files per app idea:
 
 After replacement, redeploy to Vercel (or run locally). No code changes needed.
 
-## Deploy to Vercel
+### Deploy to Vercel
 
 1. Push the repo to GitHub
 2. Import the project in [Vercel](https://vercel.com)
@@ -216,7 +263,7 @@ After replacement, redeploy to Vercel (or run locally). No code changes needed.
 
 Environment variables are optional. Webhook URLs go in `app-config.json`, not env vars.
 
-## Commands
+### Commands
 
 ```bash
 npm install
@@ -227,3 +274,11 @@ npm run build
 - `npm run dev` — copies images, starts dev server at http://localhost:3000
 - `npm run build` — copies images, builds for production
 - `npm start` — runs production server locally
+
+---
+
+<div align="center">
+
+Built by **[Scott Oliver](https://github.com/scootero)**
+
+</div>
